@@ -1,0 +1,4 @@
+<?php foreach ($block->getVendorsCategoryProduct() as $vendor) : ?>
+    <span><strong><?php echo $block->escapeHtml($vendor->getName()) ?></strong></span>
+    <p><?php echo $vendor->getDescription() ?></p>
+<?php endforeach; ?>

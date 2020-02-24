@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="VS_AddVendor::vendor" title="Vendor" module="VS_AddVendor" action="vs_addvendor/vendor" parent="Magento_Catalog::inventory" sortOrder="3" resource="VS_AddVendor::vendor"/>
+    </menu>
+</config>

@@ -1,0 +1,25 @@
+{
+    "name": "vs/add_vendor",
+    "description": "AddVendor Extension",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0"        
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "VS\\AddVendor\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Vitalii Shvets",
+            "email": "vitalik95333@gmail.com",
+            "homepage": "https://github.com/Vitaliy-Shvets/",
+            "role": "Developer"
+        }
+    ]
+}
