@@ -1,9 +1,14 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="VS_AddVendor::css/vendor.css"/>
+    </head>
     <body>
         <container name="name">
-        <block class="VS\AddVendor\Block\IndexVendor" name="product.seller.list" template="product.phtml" />
+            <block class="VS\AddVendor\Block\IndexVendor" name="product.seller.list" template="VS_AddVendor::product.phtml"/>
         </container>
-        <move element="product.seller.list" destination="product.info.stock.sku" />
+        <move element="product.seller.list" destination="product.info.stock.sku"/>
     </body>
 </page>

@@ -15,11 +15,6 @@ class AttributeVendorSourceModel extends AbstractSource
         $this->collection = $collectionFactory->create();
     }
 
-    /**
-     * getAllOptions
-     *
-     * @return array
-     */
     public function getAllOptions()
     {
         $ret = [];

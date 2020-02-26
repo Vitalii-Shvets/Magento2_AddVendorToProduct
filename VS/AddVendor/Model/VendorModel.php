@@ -1,5 +1,6 @@
 <?php
 
+
 namespace VS\AddVendor\Model;
 
 use Magento\Framework\Model\AbstractModel;
@@ -10,7 +11,6 @@ class VendorModel extends AbstractModel
     {
         $this->_init('VS\AddVendor\Model\ResourceModel\VendorResourceModel');
     }
-
 
     public function getIcon()
     {
@@ -26,7 +26,6 @@ class VendorModel extends AbstractModel
     {
         return $this->getData('name');
     }
-
 
     public function setIcon($icon)
     {

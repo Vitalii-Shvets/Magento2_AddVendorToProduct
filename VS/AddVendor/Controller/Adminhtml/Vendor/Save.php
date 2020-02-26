@@ -11,10 +11,10 @@ use Magento\Backend\App\Action;
 
 class Save extends Action
 {
-
     private $dataPersistor;
     private $vendorModel;
     const ADMIN_RESOURCE = 'VS_AddVendor::vendor';
+
     public function __construct(
         Context $context,
         DataPersistorInterface $dataPersistor,
@@ -56,10 +56,11 @@ class Save extends Action
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Vendor.'));
             }
-
             $this->dataPersistor->set('vs_addvendor', $data);
+
             return $resultRedirect->setPath('*/*/edit', ['id' => $this->getRequest()->getParam('vendor_id')]);
         }
+
         return $resultRedirect->setPath('*/*/');
     }
 
@@ -71,6 +72,7 @@ class Save extends Action
         } else {
             $data['icon'] = null;
         }
+
         return $data;
     }
 }

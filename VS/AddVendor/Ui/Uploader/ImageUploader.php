@@ -2,91 +2,32 @@
 
 
 namespace VS\AddVendor\Ui\Uploader;
+
 use Magento\MediaStorage\Helper\File\Storage\Database;
 use Magento\Framework\Filesystem;
 use Magento\MediaStorage\Model\File\UploaderFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 
-
-/**
- * Catalog image uploader
- */
 class ImageUploader
 {
-    /**
-     * Core file storage database
-     *
-     * @var \Magento\MediaStorage\Helper\File\Storage\Database
-     */
     private $coreFileStorageDatabase;
-
-    /**
-     * Media directory object (writable).
-     *
-     * @var \Magento\Framework\Filesystem\Directory\WriteInterface
-     */
     private $mediaDirectory;
-
-    /**
-     * Uploader factory
-     *
-     * @var \Magento\MediaStorage\Model\File\UploaderFactory
-     */
     private $uploaderFactory;
-
-    /**
-     * Store manager
-     *
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
     private $storeManager;
-
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
     private $logger;
+    private $baseTmpPath;
+    private $basePath;
+    private $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
 
-    /**
-     * Base tmp path
-     *
-     * @var string
-     */
-    public $baseTmpPath;
-
-    /**
-     * Base path
-     *
-     * @var string
-     */
-    public $basePath;
-
-    /**
-     * Allowed extensions
-     *
-     * @var string
-     */
-    public $allowedExtensions;
-
-    /**
-     * ImageUploader constructor
-     *
-     * @param \Magento\MediaStorage\Helper\File\Storage\Database $coreFileStorageDatabase
-     * @param \Magento\Framework\Filesystem $filesystem
-     * @param \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param string $baseTmpPath
-     * @param string $basePath
-     * @param string[] $allowedExtensions
-     */
     public function __construct(
-       Database $coreFileStorageDatabase,
-       Filesystem $filesystem,
-       UploaderFactory $uploaderFactory,
-       StoreManagerInterface $storeManager,
-       LoggerInterface $logger
-    ) {
+        Database $coreFileStorageDatabase,
+        Filesystem $filesystem,
+        UploaderFactory $uploaderFactory,
+        StoreManagerInterface $storeManager,
+        LoggerInterface $logger
+    )
+    {
         $this->coreFileStorageDatabase = $coreFileStorageDatabase;
         $this->mediaDirectory = $filesystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
         $this->uploaderFactory = $uploaderFactory;
@@ -94,97 +35,43 @@ class ImageUploader
         $this->logger = $logger;
         $this->baseTmpPath = "vs/tmp/icon";
         $this->basePath = "vs/icon";
-        $this->allowedExtensions= ['jpg', 'jpeg', 'gif', 'png'];
     }
 
-    /**
-     * Set base tmp path
-     *
-     * @param string $baseTmpPath
-     *
-     * @return void
-     */
     public function setBaseTmpPath($baseTmpPath)
     {
         $this->baseTmpPath = $baseTmpPath;
     }
 
-    /**
-     * Set base path
-     *
-     * @param string $basePath
-     *
-     * @return void
-     */
     public function setBasePath($basePath)
     {
         $this->basePath = $basePath;
     }
 
-    /**
-     * Set allowed extensions
-     *
-     * @param string[] $allowedExtensions
-     *
-     * @return void
-     */
     public function setAllowedExtensions($allowedExtensions)
     {
         $this->allowedExtensions = $allowedExtensions;
     }
 
-    /**
-     * Retrieve base tmp path
-     *
-     * @return string
-     */
     public function getBaseTmpPath()
     {
         return $this->baseTmpPath;
     }
 
-    /**
-     * Retrieve base path
-     *
-     * @return string
-     */
     public function getBasePath()
     {
         return $this->basePath;
     }
 
-    /**
-     * Retrieve base path
-     *
-     * @return string[]
-     */
     public function getAllowedExtensions()
     {
         return $this->allowedExtensions;
     }
 
-    /**
-     * Retrieve path
-     *
-     * @param string $path
-     * @param string $imageName
-     *
-     * @return string
-     */
     public function getFilePath($path, $imageName)
     {
         return rtrim($path, '/') . '/' . ltrim($imageName, '/');
     }
 
-    /**
-     * Checking file for moving and move it
-     *
-     * @param string $imageName
-     *
-     * @return string
-     *
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
     public function moveFileFromTmp($imageName)
     {
         $baseTmpPath = $this->getBaseTmpPath();
@@ -211,15 +98,6 @@ class ImageUploader
         return $imageName;
     }
 
-    /**
-     * Checking file for save and save it to tmp dir
-     *
-     * @param string $fileId
-     *
-     * @return string[]
-     *
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
     public function saveFileToTmpDir($fileId)
     {
         $baseTmpPath = $this->getBaseTmpPath();

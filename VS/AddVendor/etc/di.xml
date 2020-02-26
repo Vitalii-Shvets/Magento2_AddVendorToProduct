@@ -1,28 +1,20 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="vs_addvendor_vendor_listing_data_source" xsi:type="string">VS\AddVendor\Model\ResourceModel\VendorCollection\Grid\Collection</item>
+                <item name="vs_addvendor_vendor_listing_data_source" xsi:type="string">
+                    VS\AddVendor\Model\ResourceModel\VendorCollection\Grid\Collection
+                </item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="VS\AddVendor\Model\ResourceModel\VendorCollection\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="VS\AddVendor\Model\ResourceModel\VendorCollection\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">vs_add_vendor_table</argument>
-            <argument name="resourceModel" xsi:type="string">VS\AddVendor\Model\ResourceModel\VendorResourceModel</argument>
-        </arguments>
-    </virtualType>
-    <type name="VS\AddVendor\Ui\Uploader\ImageUploader">
-        <arguments>
-            <!-- Temporary file stored in pub/media/faq/tmp/icon -->
-            <argument name="baseTmpPath" xsi:type="string">vs/tmp/icon</argument>
-            <argument name="basePath" xsi:type="string">vs/icon</argument>
-            <argument name="allowedExtensions" xsi:type="array">
-                <item name="jpg" xsi:type="string">jpg</item>
-                <item name="jpeg" xsi:type="string">jpeg</item>
-                <item name="gif" xsi:type="string">gif</item>
-                <item name="png" xsi:type="string">png</item>
+            <argument name="resourceModel" xsi:type="string">VS\AddVendor\Model\ResourceModel\VendorResourceModel
             </argument>
         </arguments>
-    </type>
+    </virtualType>
 </config>

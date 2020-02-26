@@ -1,5 +1,6 @@
 <?php
 
+
 namespace VS\AddVendor\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;

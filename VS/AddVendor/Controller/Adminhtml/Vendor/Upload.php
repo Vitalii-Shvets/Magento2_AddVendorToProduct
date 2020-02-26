@@ -3,7 +3,6 @@
 
 namespace VS\AddVendor\Controller\Adminhtml\Vendor;
 
-
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -12,10 +11,12 @@ use VS\AddVendor\Ui\Uploader\ImageUploader;
 class Upload extends Action
 {
     protected $imageUploader;
+
     public function __construct(
         Context $context,
         ImageUploader $imageUploader
-    ) {
+    )
+    {
         parent::__construct($context);
         $this->imageUploader = $imageUploader;
     }
@@ -39,6 +40,7 @@ class Upload extends Action
         } catch (\Exception $e) {
             $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
         }
+
         return $this->resultFactory->create(ResultFactory::TYPE_JSON)->setData($result);
     }
 }

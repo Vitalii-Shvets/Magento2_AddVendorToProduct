@@ -1,8 +1,13 @@
-<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">vs_addvendor_vendor_listing.vs_addvendor_vendor_listing_data_source</item>
-            <item name="deps" xsi:type="string">vs_addvendor_vendor_listing.vs_addvendor_vendor_listing_data_source</item>
+            <item name="provider" xsi:type="string">
+                vs_addvendor_vendor_listing.vs_addvendor_vendor_listing_data_source
+            </item>
+            <item name="deps" xsi:type="string">vs_addvendor_vendor_listing.vs_addvendor_vendor_listing_data_source
+            </item>
         </item>
         <item name="spinner" xsi:type="string">vs_addvendor_vendor_columns</item>
         <item name="buttons" xsi:type="array">
@@ -14,9 +19,12 @@
             </item>
         </item>
     </argument>
+
     <dataSource name="vs_addvendor_vendor_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="class" xsi:type="string">
+                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+            </argument>
             <argument name="name" xsi:type="string">vs_addvendor_vendor_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">vendor_id</argument>
             <argument name="requestFieldName" xsi:type="string">vendor_id</argument>
@@ -51,7 +59,8 @@
             <!-- custom filter, Expected is one of ( filterInput, filterRange, filterSelect, containerConfiguration ) -->
             <filterSelect name="store_id">
                 <argument name="optionsProvider" xsi:type="configurableObject">
-                    <argument name="class" xsi:type="string">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</argument>
+                    <argument name="class" xsi:type="string">Magento\Cms\Ui\Component\Listing\Column\Cms\Options
+                    </argument>
                 </argument>
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -65,13 +74,14 @@
                 </argument>
             </filterSelect>
         </filters>
+
         <bookmark name="bookmark"/>
         <columnsControls name="columns_controls"/>
         <paging name="listing_paging"/>
     </listingToolbar>
 
-
     <columns name="vs_addvendor_vendor_columns">
+
         <column name="vendor_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -81,6 +91,7 @@
                 </item>
             </argument>
         </column>
+
         <column name="icon" class="VS\AddVendor\Ui\Component\Listing\Column\Icon">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -92,6 +103,7 @@
                 </item>
             </argument>
         </column>
+
         <column name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

@@ -1,27 +1,35 @@
 <?php
 
 
-namespace VS\AddVendor\Setup;
+namespace VS\AddVendor\Setup\Patch\Data;
 
-
-use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Framework\Setup\InstallDataInterface;
-use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\Patch\DataPatchInterface;
 
-class InstallData implements InstallDataInterface
+class AddVendorAttribute implements DataPatchInterface
 {
+    /** @var ModuleDataSetupInterface */
+    private $moduleDataSetup;
+
+    /** @var EavSetupFactory */
     private $eavSetupFactory;
 
-    public function __construct(EavSetupFactory $eavSetupFactory)
-    {
+    /**
+     * @param ModuleDataSetupInterface $moduleDataSetup
+     * @param EavSetupFactory $eavSetupFactory
+     */
+    public function __construct(
+        ModuleDataSetupInterface $moduleDataSetup,
+        EavSetupFactory $eavSetupFactory
+    ) {
+        $this->moduleDataSetup = $moduleDataSetup;
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
-    public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    public function apply()
     {
-        $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+        $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
         $eavSetup->addAttribute(
             \Magento\Catalog\Model\Product::ENTITY,
             'vendor',
@@ -47,5 +55,15 @@ class InstallData implements InstallDataInterface
                 'apply_to' => ''
             ]
         );
+    }
+
+    public static function getDependencies()
+    {
+        return [];
+    }
+
+    public function getAliases()
+    {
+        return [];
     }
 }
